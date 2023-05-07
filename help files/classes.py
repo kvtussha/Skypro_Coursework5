@@ -1,18 +1,28 @@
+from dataclasses import dataclass
+from skills import Skill
 
 @dataclass
 class UnitClass:
     name: str
     max_health: float
-    max_stamina: float
+    max_endurance: float
     attack: float
-    stamina: float
+    endurance: float
     armor: float
     skill: Skill
 
 
-WarriorClass =  ... # TODO Инициализируем экземпляр класса UnitClass и присваиваем ему необходимые значения аттрибуотов
+WarriorClass = UnitClass(
+    name="Воин",
+    max_health=60,
+    max_endurance=30,
+    attack=0.8,
+    endurance=0.9,
+    armor=1.2,
+    skill="Outburst of rage"
+)
 
-ThiefClass = ... # TODO действуем так же как и с войном
+ThiefClass = UnitClass()
 
 unit_classes = {
     ThiefClass.name: ThiefClass,

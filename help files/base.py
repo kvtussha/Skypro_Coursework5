@@ -11,7 +11,7 @@ class BaseSingleton(type):
 
 
 class Arena(metaclass=BaseSingleton):
-    STAMINA_PER_ROUND = 1
+    endurance_PER_ROUND = 1
     player = None
     enemy = None
     game_is_running = False
@@ -30,7 +30,7 @@ class Arena(metaclass=BaseSingleton):
         # TODO если Здоровья игроков в порядке то ничего не происходит
         pass
 
-    def _stamina_regeneration(self):
+    def _endurance_regeneration(self):
         # TODO регенерация здоровья и стамины для игрока и врага за ход
         # TODO в этом методе к количеству стамины игрока и врага прибавляется константное значение.
         # TODO главное чтобы оно не привысило максимальные значения (используйте if)
@@ -42,7 +42,7 @@ class Arena(metaclass=BaseSingleton):
         # TODO создаем поле result и проверяем что вернется в результате функции self._check_players_hp
         # TODO если result -> возвращаем его
         # TODO если же результата пока нет и после завершения хода игра продолжается,
-        # TODO тогда запускаем процесс регенирации стамины и здоровья для игроков (self._stamina_regeneration)
+        # TODO тогда запускаем процесс регенирации стамины и здоровья для игроков (self._endurance_regeneration)
         # TODO и вызываем функцию self.enemy.hit(self.player) - ответный удар врага
         pass
 

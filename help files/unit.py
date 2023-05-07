@@ -11,13 +11,10 @@ class BaseUnit(ABC):
     Базовый класс юнита
     """
     def __init__(self, name: str, unit_class: UnitClass):
-        """
-        При инициализации класса Unit используем свойства класса UnitClass
-        """
-        self.name = ...
+        self.name = name
         self.unit_class = unit_class
         self.hp = unit_class.max_health
-        self.stamina = unit_class.max_stamina
+        self.endurance = unit_class.max_endurance
         self.weapon = ...
         self.armor = ...
         self._is_skill_used = ...
@@ -27,7 +24,7 @@ class BaseUnit(ABC):
         return # TODO возвращаем аттрибут hp в красивом виде
 
     @property
-    def stamina_points(self):
+    def endurance_points(self):
         return  # TODO возвращаем аттрибут hp в красивом виде
 
     def equip_weapon(self, weapon: Weapon):

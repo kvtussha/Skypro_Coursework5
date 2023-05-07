@@ -19,7 +19,7 @@
             <p><em>Информация:</em></p>
             <hr>
             <p>Очки здоровья: {{ heroes.player.health_points }}/{{ heroes.player.unit_class.max_health }}</br> Очки выносливости:
-              {{ heroes.player.stamina_points }}/{{ heroes.player.unit_class.max_stamina }}</p>
+              {{ heroes.player.endurance_points }}/{{ heroes.player.unit_class.max_endurance }}</p>
           </div>
           <div class="col align-self-center">
             <button type="button" onclick="window.location.href='/fight/hit'" class="btn btn-success m-2">Нанести удар</button></br>
@@ -37,7 +37,7 @@
             <p><em>Информация:</em></p>
             <hr>
             <p>Очки здоровья: {{ heroes.enemy.health_points }}/{{ heroes.enemy.unit_class.max_health }}</br> Очки выносливости:
-              {{ heroes.enemy.stamina_points }}/{{ heroes.enemy.unit_class.max_stamina }}</p>
+              {{ heroes.enemy.endurance_points }}/{{ heroes.enemy.unit_class.max_endurance }}</p>
           </div>
         </div>
       </div>
