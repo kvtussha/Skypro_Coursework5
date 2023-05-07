@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from unit import BaseUnit
 
-
+#ПОМЕНЯТЬ skill_effect
 class Skill(ABC):
     """
     Базовый класс умения
@@ -29,7 +29,7 @@ class Skill(ABC):
         pass
 
     @abstractmethod
-    def skill_effect(self) -> str:
+    def skill_effect(self, skill: Skill()) -> str:
         pass
 
     def _is_endurance_enough(self) -> bool:
@@ -46,28 +46,19 @@ class Skill(ABC):
         return f"{self.user.name} хотел использовать {self.name}, но у него недостаточно выносливости."
 
 
-class SkillEffect:
-    def __init__(self, user: BaseUnit, target: BaseUnit):
-        self.user = user
-        self.target = target
-        self.skill = Skill()
-
-    def skill_effect(self):
-        if self.skill.use_skill(self):
-            self.target.endurance -= self.skill.user.damage
-            self.target.hp -= self.skill.user.damage
-            self.user.endurance += self.skill.user.damage
-            return "<Имя персонажа>, используя <название скилла>, пробивает <название брони> " \
-                   "соперника и наносит 18 очков урона."
-        return self.skill.use_skill(self)
-
-
 class Outburst_of_rage(Skill):
     name = "Outburst of rage: Вспышка ярости"
     endurance = 7
     damage = 18
-
-    SkillEffect.skill_effect()
+    skill = Skill()
+    def skill_effect(self, skill):
+        if skill.use_skill(self):
+            self.target.endurance -= self.user.hp
+            self.target.hp -= self.user.hp
+            self.user.endurance += self.user.hp
+            return "<Имя персонажа>, используя <название скилла>, пробивает <название брони> " \
+                   "соперника и наносит 18 очков урона."
+        return skill.use_skill()
 
 
 class Whirlwind_of_power(Skill):
@@ -75,7 +66,14 @@ class Whirlwind_of_power(Skill):
     endurance = 5
     damage = 12
 
-    SkillEffect.skill_effect()
+    def skill_effect(self, skill):
+        if skill.use_skill(self):
+            self.target.endurance -= self.user.hp
+            self.target.hp -= self.user.hp
+            self.user.endurance += self.user.hp
+            return "<Имя персонажа>, используя <название скилла>, пробивает <название брони> " \
+                   "соперника и наносит 18 очков урона."
+        return skill.use_skill()
 
 
 class Frenzied_Speed_Potion(Skill):
@@ -83,7 +81,14 @@ class Frenzied_Speed_Potion(Skill):
     endurance = 3
     damage = 14
 
-    SkillEffect.skill_effect()
+    def skill_effect(self, skill):
+        if skill.use_skill(self):
+            self.target.endurance -= self.user.hp
+            self.target.hp -= self.user.hp
+            self.user.endurance += self.user.hp
+            return "<Имя персонажа>, используя <название скилла>, пробивает <название брони> " \
+                   "соперника и наносит 18 очков урона."
+        return skill.use_skill()
 
 
 class Absorbing_Darkness(Skill):
@@ -91,7 +96,14 @@ class Absorbing_Darkness(Skill):
     endurance = 8
     damage = 11
 
-    SkillEffect.skill_effect()
+    def skill_effect(self, skill):
+        if skill.use_skill(self):
+            self.target.endurance -= self.user.hp
+            self.target.hp -= self.user.hp
+            self.user.endurance += self.user.hp
+            return "<Имя персонажа>, используя <название скилла>, пробивает <название брони> " \
+                   "соперника и наносит 18 очков урона."
+        return skill.use_skill()
 
 
 class Tornado_Madness(Skill):
@@ -99,4 +111,12 @@ class Tornado_Madness(Skill):
     endurance = 4
     damage = 10
 
-    SkillEffect.skill_effect()
+    def skill_effect(self, skill):
+        if skill.use_skill(self):
+            self.target.endurance -= self.user.hp
+            self.target.hp -= self.user.hp
+            self.user.endurance += self.user.hp
+            return "<Имя персонажа>, используя <название скилла>, пробивает <название брони> " \
+                   "соперника и наносит 18 очков урона."
+        return skill.use_skill()
+
