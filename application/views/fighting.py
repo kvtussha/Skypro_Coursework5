@@ -1,7 +1,16 @@
 from flask import Blueprint, render_template, Response, redirect, url_for
 from application.container import heroes, arena
 
-fighting_bp = Blueprint('fighting_bp', __name__)
+# fighting_bp = Blueprint('fighting_bp', __name__)
+
+# # @fighting_bp.route("/")
+# @fighting_bp.route("/fight")
+# def start_fight() -> str:
+#     arena.start_game(player=heroes["player"], enemy=heroes["enemy"])
+#     return render_template("fight.html", heroes=heroes, result='Бой начался!')
+
+fighting_bp = Blueprint('fighting_bp', __name__, url_prefix='/fight')
+
 
 @fighting_bp.route("/")
 def start_fight() -> str:

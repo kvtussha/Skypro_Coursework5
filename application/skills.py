@@ -28,14 +28,10 @@ class Skill(ABC):
     def damage(self):
         pass
 
-    def skill_effect(self, skill):
-        if skill.use_skill(self):
-            self.target.endurance -= self.user.hp
-            self.target.hp -= self.user.hp
-            self.user.endurance += self.user.hp
-            return "<Имя персонажа>, используя <название умения>, пробивает <название брони> " \
-                   "соперника и наносит 18 очков урона."
-        return skill.use_skill()
+    def skill_effect(self):
+        self.user.endurance -= self.endurance
+        self.target.hp -= self.damage
+        return f"У {self.user.name} применил {self.name}"
 
     def _is_endurance_enough(self) -> bool:
         return self.user.endurance > self.endurance
@@ -44,12 +40,12 @@ class Skill(ABC):
         self.user = user
         self.target = target
         if self._is_endurance_enough:
-            return self.skill_effect(self)
+            return self.skill_effect()
         return f"{self.user.name} хотел использовать {self.name}, но у него недостаточно выносливости."
 
 
 class OutburstRage(Skill):
-    _name: str = "Outburst of rage: Вспышка ярости"
+    _name: str = "Вспышка ярости"
     _endurance: float = 7
     _damage: float = 18
 
@@ -67,7 +63,7 @@ class OutburstRage(Skill):
 
 
 class WhirlwindPower(Skill):
-    _name = "A whirlwind of power: Вихрь силы"
+    _name = "Вихрь силы"
     _endurance = 5
     _damage = 12
 
@@ -85,7 +81,7 @@ class WhirlwindPower(Skill):
 
 
 class FrenziedSpeedPotion(Skill):
-    _name = "The Frenzied Speed Potion: Зелье бешеной скорости"
+    _name = "Зелье бешеной скорости"
     _endurance = 3
     _damage = 14
 
@@ -103,7 +99,7 @@ class FrenziedSpeedPotion(Skill):
 
 
 class AbsorbingDarkness(Skill):
-    _name = "Absorbing Darkness: Поглощающая тьма"
+    _name = "Поглощающая тьма"
     _endurance = 8
     _damage = 11
 
@@ -121,7 +117,7 @@ class AbsorbingDarkness(Skill):
 
 
 class TornadoMadness(Skill):
-    _name = "Tornado Madness: Торнадо безумия"
+    _name = "Торнадо безумия"
     _endurance = 4
     _damage = 10
 
